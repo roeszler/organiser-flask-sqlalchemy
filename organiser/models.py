@@ -1,5 +1,6 @@
 from organiser import db
-from dateutil.relativedelta import relativedelta
+# from dateutil.relativedelta import relativedelta
+from dateutil import relativedelta
 
 
 class Category(db.Model):

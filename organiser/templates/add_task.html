@@ -48,11 +48,6 @@
                 <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                 <select name="category_id" id="category_id" class="validate" required>
                     <option value="" disabled selected>Choose Category</option>
-                    <!-- 
-                        To create a new 'option' in the dropdown. 
-                        The value for each option will be the category's unique ID, but obviously the ID won't make 
-                        much sense to our users, so we'll use the 'category.category_name' for display purposes. 
-                    -->
                     {% for category in categories %}
                         <option value="{{ category.id }}">{{ category.category_name }}</option>
                     {% endfor %}

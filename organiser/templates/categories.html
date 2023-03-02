@@ -12,24 +12,15 @@
 </div>
 
 <div class="row">
-    <!-- 
-    "% for category in categories %" For each 'category' in the ‘list of categories' being passed over 
-    from our Python function, it will generate a new column and card. 
-    -->
     {% for category in categories %}
     <div class="col s12 m6 l3">
         <div class="card light-blue darken-4 center-align">
             <div class="card-content white-text">
                 <span class="card-title">{{ category.category_name }}</span>
                 <hr>
-                <!-- <i class="fa-solid fa-dumbbell"></i> -->
-                <!-- <p>Materialize class:<br>card light-blue darken-4 center-align<br>category_name = {{ category.category_name }}</p> -->
             </div>
             <div class="card-action">
-                <!-- (% if category.owner == session.user %) -->
-                <!-- calling our new 'edit_category' function, then pass another argument to specify which particular category we are attempting to update. -->
                 <a href="{{ url_for('edit_category', category_id=category.id) }}" class="btn green accent-4">Edit</a>
-                <!-- <a href="{{ url_for('delete_category', category_id=category.id) }}" class="btn red">Delete</a> -->
                 <a href="#modal-{{ category.id }}" class="btn red modal-trigger">Delete</a>
 
                 <!-- confirm delete modal -->
@@ -44,7 +35,6 @@
                         <a href="{{ url_for('categories') }}" class="modal-close btn green accent-4">Cancel</a>
                     </div>
                 </div>
-                <!-- (% endif %) -->
             </div>
         </div>
     </div>
