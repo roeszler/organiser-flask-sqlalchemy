@@ -68,6 +68,6 @@ The `ondelete="CASCADE"` to function that once a category is deleted, it will pe
 
 ### Current Bug:
 2/3/23 Forgotten how to update the content of my modified table structure in models.py to be reflected on the ElephantSQL database that I have used. 
-* ‘python manage.py makemigration && migrate’ seems to be in my head, but that is a Django command… 
-* I am about to try ‘flask --app flaskr init-db’, 
+* `python manage.py makemigration && migrate` seems to be in my head, but that is a Django command… 
+* I am about to try `flask --app flaskr init-db`, 
 As it is kind-of working at the moment, I thought I would send it on through to the repo.
