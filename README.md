@@ -65,3 +65,9 @@ and point to the ID from our Category class, and therefore we need to use lowerc
 The `ondelete="CASCADE"` to function that once a category is deleted, it will perform a **cascading effect** and also delete any task linked to it.
 
 `category_id = db.Column(db.Integer, db.ForeignKey("category.id", ondelete="CASCADE"), nullable=False)`
+
+### Current Bug:
+2/3/23 Forgotten how to update the content of my modified table structure in models.py to be reflected on the ElephantSQL database that I have used. 
+* ‘python manage.py makemigration && migrate’ seems to be in my head, but that is a Django command… 
+* I am about to try ‘flask --app flaskr init-db’, 
+As it is kind-of working at the moment, I thought I would send it on through to the repo.
