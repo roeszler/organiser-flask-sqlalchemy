@@ -6,3 +6,4 @@ itsdangerous==2.1.2
 psycopg2==2.9.5
 SQLAlchemy==2.0.4
 Werkzeug==2.2.3
+python-dateutil==2.8.2
