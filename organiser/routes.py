@@ -122,15 +122,42 @@ def add_user():
     categories = list(Category.query.order_by(Category.category_name).all())
     if request.method == "POST":
         user = User(
-            userFirst_name=request.form.get("userFirst_name"),
-            userLast_name=request.form.get("userLast_name"),
+            user_fname=request.form.get("user_fname"),
+            user_lname=request.form.get("user_lname"),
+            dob=request.form.get("dob"),
             user_email=request.form.get("user_email"),
-            user_profession=request.form.get("user_profession"),
-            is_urgent=bool(True if request.form.get("is_urgent") else False),
-            due_date=request.form.get("due_date"),
+            gender=request.form.get("gender"),
+            profession=request.form.get("profession"),
+            in_house=bool(True if request.form.get("in_house") else False),
             category_id=request.form.get("category_id")
         )
         db.session.add(user)
         db.session.commit()
         return redirect(url_for("home"))
     return render_template("add_user.html", categories=categories)
+
+
+@app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
+def edit_user(user_id):
+    user = User.query.get_or_404(user_id)
+    categories = list(Category.query.order_by(Category.category_name).all())
+    if request.method == "POST":
+        user.user_fname = request.form.get("user_fname")
+        user.user_lname = request.form.get("user_lname")
+        user.dob = request.form.get("dob")
+        user.user_email = request.form.get("user_email")
+        user.gender = request.form.get("gender")
+        user.profession = request.form.get("profession")
+        task.is_urgent = bool(True if request.form.get("is_urgent") else False)
+        task.category_id = request.form.get("category_id")
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("edit_user.html", user=user, task=task, categories=categories)
+
+
+@app.route("/delete_user/<int:user_id>")
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for("home"))

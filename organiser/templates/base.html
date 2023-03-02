@@ -20,8 +20,8 @@
                 <!-- <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li> <!-- ref to routes.py function -->
-                    <li><a href="{{ url_for('add_task') }}">New Task</a>
                     <li><a href="{{ url_for('add_user') }}">New User</a>
+                    <li><a href="{{ url_for('add_task') }}">New Task</a>
                     <li><a href="{{ url_for('categories') }}">Categories</a>
                 </ul>
             </div>
@@ -30,8 +30,8 @@
         <!-- mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('home') }}">Home</a>
+                <li><a href="{{ url_for('add_user') }}">New User</a>
             <li><a href="{{ url_for('add_task') }}">New Task</a>
-            <li><a href="{{ url_for('add_user') }}">New User</a>
             <li><a href="{{ url_for('categories') }}">Categories</a>
         </ul>
     </header>

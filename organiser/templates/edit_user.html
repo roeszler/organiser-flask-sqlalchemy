@@ -1,31 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="light-blue-text text-darken-4 center-align">Add User</h3>
+<h3 class="light-blue-text text-darken-4 center-align">Edit user</h3>
 
 <div class="row card-panel grey lighten-5">
-    <form class="col s12" method="POST" action="{{ url_for('add_user') }}">
-        <!-- User fname -->
+    <form class="col s12" method="POST" action="{{ url_for('edit_task', user_id=user.id) }}">
+        <!-- First name -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                <input id="user_fname" name="user_fname" minlength="5" maxlength="50" type="text" class="validate" required>
+                <input id="user_fname" name="user_fname" value="{{ user.user_fname }}" minlength="5" maxlength="50" type="text" class="validate" required>
                 <label for="user_fname">First Name</label>
             </div>
         </div>
-         <!-- User lname -->
-         <div class="row">
+        <!-- First name -->
+        <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
-                <textarea id="user_lname" name="user_lname" minlength="5" maxlength="50" type="text" class="materialize-textarea validate" required></textarea>
+                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <input id="user_lname" name="user_lname" value="{{ user.user_lname }}" minlength="5" maxlength="50" type="text" class="validate" required>
                 <label for="user_lname">Last Name</label>
             </div>
         </div>
-        <!-- Date Of Birth -->
+        <!-- Date of Birth -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
-                <input id="dob" name="dob" type="text" class="datepicker validate" required>
+                <input id="dob" name="dob" type="text" value="{{ user.dob.strftime('%d %B %Y') }}" class="datepicker validate" required>
                 <label for="dob">Date of Birth</label>
             </div>
         </div>
@@ -33,16 +33,16 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-envelope prefix light-blue-text text-darken-4"></i>
-                <textarea id="user_email" name="user_email" minlength="5" maxlength="100" type="text" class="materialize-textarea validate" required></textarea>
+                <input id="user_email" name="user_email" value="{{ user.user_email }}" minlength="5" maxlength="50" type="text" class="validate" required>
                 <label for="user_email">Email Address</label>
             </div>
         </div>
         <!-- Gender -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa fa-transgender-alt prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                 <select name="gender" id="gender" class="validate" required>
-                    <option value="" disabled selected>Gender</option>
+                    <option value="{{ user.gender }}" disabled>{{ user.gender }}</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="pnts">Prefer Not to Say</option>
@@ -52,19 +52,23 @@
         </div>
         <!-- Profession -->
         <div class="row">
-           <div class="input-field col s12">
-               <i class="fas fa-briefcase prefix light-blue-text text-darken-4"></i>
-               <textarea id="profession" name="profession" minlength="5" maxlength="100" type="text" class="materialize-textarea validate" required></textarea>
-               <label for="profession">Profession</label>
-           </div>
-       </div>
-        <!-- Work Outstanding -->
+            <div class="input-field col s12">
+                <i class="fas fa-briefcase prefix light-blue-text text-darken-4"></i>
+                <input id="profession" name="profession" value="{{ user.profession }}" minlength="5" maxlength="100" type="text" class="validate">
+                <label for="profession">Profession</label>
+            </div>
+        </div>
+        <!-- is urgent -->
         <div class="row">
             <div class="input-field col s12">
                 <div class="switch">
-                    <i class="fas fa-check-circle prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-check-circle prefix light-green-text text-darken-4"></i>
                     <label for="in_house">
-                        <input id="in_house" name="in_house" type="checkbox">
+                        {% if user.in_house == True %}
+                            <input id="in_house" name="in_house" type="checkbox" checked>
+                        {% else %}
+                            <input id="in_house" name="in_house" type="checkbox">
+                        {% endif %}
                         <span class="lever"></span>
                         Currently has work In House
                     </label>
@@ -76,9 +80,13 @@
             <div class="input-field col s12">
                 <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                 <select name="category_id" id="category_id" class="validate" required>
-                    <option value="" disabled selected>Choose Category</option>
+                    <option value="" disabled>Choose Category</option>
                     {% for category in categories %}
-                        <option value="{{ category.id }}">{{ category.category_name }}</option>
+                        {% if category == task.category %}
+                            <option value="{{ category.id }}" selected>{{ category.category_name }}</option>
+                        {% else %}
+                            <option value="{{ category.id }}">{{ category.category_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label for="category_id">Category</label>
@@ -88,7 +96,7 @@
         <div class="row">
             <div class="col s12 center-align">
                 <button type="submit" class="btn-large light-blue darken-1">
-                    Add User <i class="fas fa-plus-square right"></i>
+                    Update Records<i class="fas fa-edit right"></i>
                 </button>
             </div>
         </div>
