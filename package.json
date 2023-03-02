@@ -1,0 +1,20 @@
+{
+  "name": "organiser-flask-sqlalchemy",
+  "version": "1.0.0",
+  "description": "[![YK logo](organiser/static/img/yodaKode-sml.png)](https://github.com/roeszler)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roeszler/organiser-flask-sqlalchemy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roeszler/organiser-flask-sqlalchemy/issues"
+  },
+  "homepage": "https://github.com/roeszler/organiser-flask-sqlalchemy#readme"
+}
