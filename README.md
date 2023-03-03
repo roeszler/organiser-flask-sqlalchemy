@@ -66,8 +66,11 @@ The `ondelete="CASCADE"` to function that once a category is deleted, it will pe
 
 `category_id = db.Column(db.Integer, db.ForeignKey("category.id", ondelete="CASCADE"), nullable=False)`
 
-### Current Bug:
-2/3/23 Forgotten how to update the content of my modified table structure in models.py to be reflected on the ElephantSQL database that I have used. 
-* `python manage.py makemigration && migrate` seems to be in my head, but that is a Django command… 
-* I am about to try `flask --app flaskr init-db`, 
-As it is kind-of working at the moment, I thought I would send it on through to the repo.
+## To Migrate the DB Models
+* `python3`
+* `from organiser import db`
+* `db.create_all()`
+and exit the CLI with `exit()`
+
+### Current Bugs:
+- None

@@ -27,14 +27,6 @@ class Task(db.Model):
         return f"{self.id} - Task: {self.task_name} | Urgent: {self.is_urgent}"
 
 
-GENDER_CHOICES = (
-    ('---','---'),
-    ('male','MALE'),
-    ('female', 'FEMALE'),
-    ('other','OTHER'),
-    ('pnts','PNTS'),
-)
-
 class User(db.Model):
     """ schema for the User model """
     id = db.Column(db.Integer, primary_key=True)

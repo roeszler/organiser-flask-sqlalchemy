@@ -14,6 +14,7 @@
     </div>
 </div>
 
+<!-- Tasks -->
 <ul class="collapsible">
     {% for task in tasks|sort(attribute="due_date") %}
     <li>
@@ -39,6 +40,40 @@
                 </div>
                 <div class="modal-footer">
                     <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn red">Delete</a>
+                    <a href="{{ url_for('home') }}" class="modal-close btn green accent-4">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+<!-- Users -->
+<ul class="collapsible">
+    {% for user in users|sort(attribute="user_fname") %}
+    <li>
+        <div class="collapsible-header white-text light-blue darken-4">
+            <i class="fas fa-caret-right"></i>
+            <strong>{{ user.user_fname }} {{ user.user_lname }}</strong> : {{ user.user_email }}
+            {% if user.in_house == True %}
+                <i class="fas fa-industry light-blue-text text-lighten-1"></i>
+            {% endif %}
+        </div>
+        <div class="collapsible-body">
+            Category: <strong>{{ user.category }}</strong>
+            <p>Profession: <br>{{ user.profession }}</p>
+            <p>
+                <a href="{{ url_for('edit_user', user_id=user.id) }}" class="btn green accent-4">Edit</a>
+                <a href="#modal-{{ user.id }}" class="btn red modal-trigger">Delete</a>
+            </p>
+            <!-- confirm delete modal -->
+            <div id="modal-{{ user.id }}" class="modal">
+                <div class="modal-content">
+                    <h4>Are you sure you want to delete the entire user?</h4>
+                    <p>This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ url_for('delete_user', user_id=task.id) }}" class="btn red">Delete</a>
                     <a href="{{ url_for('home') }}" class="modal-close btn green accent-4">Cancel</a>
                 </div>
             </div>
